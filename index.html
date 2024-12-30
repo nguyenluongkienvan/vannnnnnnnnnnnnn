@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web bán hàng của Van</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header */
+        header {
+            background-color: #f1f1f1;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        header img {
+            max-height: 50px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-right {
+            flex-grow: 1;
+            text-align: right;
+        }
+
+        /* Menu điều hướng */
+        nav {
+            background-color: #d32f2f;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav li {
+            margin: 0 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        /* Main nội dung */
+        main {
+            padding: 20px;
+        }
+
+        /* Hình ảnh và sản phẩm */
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            padding: 20px 0;
+        }
+
+        .product-item {
+            text-align: center;
+            border: 1px solid #ddd;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            background-color: #fff;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, border 0.3s ease;
+        }
+
+        .product-item:hover {
+            transform: scale(1.05);
+            border-color: #ff5722;
+        }
+
+        .product-item img {
+            width: 100%;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .product-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .product-item p {
+            margin: 10px 0;
+            font-size: 16px;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .product-item:hover p {
+            color: #ff5722;
+        }
+
+        .product-price {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 18px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-item:hover .product-price {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        footer h4 {
+            margin: 10px 0;
+        }
+
+        /* Phần đăng ký ở góc phải */
+        .footer-signup {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #ff5722;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .footer-signup input {
+            padding: 8px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 200px;
+        }
+
+        .footer-signup button {
+            padding: 8px;
+            border: none;
+            background-color: #fff;
+            color: #ff5722;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .footer-signup button:hover {
+            background-color: #ff8c52;
+        }
+
+        /* Responsive: Điều chỉnh cho màn hình nhỏ */
+        @media (max-width: 1200px) {
+            .product-list {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .product-list {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .product-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 400px) {
+            .product-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-left">
+            <img src="OIP (5).jpg" alt="Logo" style="max-height: 100%;">
+        </div>
+        <div class="header-right">
+            <img src="OIP (4).jpg" alt="Quảng cáo" style="width: 60%; max-height: 100%;">
+        </div>
+    </header>
+
+    <!-- Menu điều hướng -->
+    <nav>
+        <ul>
+            <li><a href="#home">Trang chủ</a></li>
+            <li><a href="#about">Giới thiệu</a></li>
+            <li><a href="#news">Tin tức</a></li>
+            <li><a href="#products">Sản phẩm</a></li>
+            <li><a href="#contact">Liên hệ</a></li>
+        </ul>
+    </nav>
+
+    <!-- Nội dung chính -->
+    <main>
+        <div>
+            <img src="OIP.jpg" alt="Hình nền chính" style="width: 100%; max-height: 300px;">
+        </div>
+
+        <!-- Danh sách sản phẩm -->
+        <section class="product-list">
+            <div class="product-item">
+                <img src="download.jpg" alt="ao giay nam">
+                <p>Sản phẩm 1</p>
+                <div class="product-price">500.000 VNĐ</div>
+            </div>
+            <div class="product-item">
+                <img src="chup-anh-quan-ao.jpg" alt="vay hong">
+                <p>Váy hồng</p>
+                <div class="product-price">300.000 VNĐ</div>
+            </div>
+            <div class="product-item">
+                <img src="chup-anh-quan-ao5.jpg" alt="ao tim">
+                <p>Áo tím</p>
+                <div class="product-price">400.000 VNĐ</div>
+            </div>
+            <div class="product-item">
+                <img src="download (3).jpg" alt="ao vay">
+                <p>Áo váy</p>
+                <div class="product-price">550.000 VNĐ</div>
+            </div>
+            <div class="product-item">
+                <img src="download (5).jpg" alt="ao vay den">
+                <p>Áo váy đen</p>
+                <div class="product-price">600.000 VNĐ</div>
+            </div>
+            <div class="product-item">
+                <img src="images (1).jpg" alt="ao trang">
+                <p>Áo trắng</p>
+                <div class="product-price">250.000 VNĐ</div>
+            </div>
+            <div class="product-item">
+                <img src="images.jpg" alt="ao den">
+                <p>Áo đen</p>
+                <div class="product-price">450.000 VNĐ</div>
+            </div>
+            <div class="product-item">
+                <img src="OIP (2).jpg" alt="ao len">
+                <p>Áo len</p>
+                <div class="product-price">500.000 VNĐ</div>
+            </div>
+            <div class="product-item">
+                <img src="OIP (3).jpg" alt="quan jean">
+                <p>Quần jean</p>
+                <div class="product-price">350.000 VNĐ</div>
+            </div>
+            <div class="product-item">
+                <img src="OIP (1).jpg" alt="ao quan">
+                <p>Áo quần</p>
+                <div class="product-price">600.000 VNĐ</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div style="display: flex; justify-content: space-around; margin-bottom: 20px;">
+            <div>
+                <h4>Về chúng tôi</h4>
+                <p>Nguyễn Lương Kiến Văn</p>
+            </div>
+            <div>
+                <h4>Liên hệ</h4>
+                <p>Email: accclonecuavan1@gmail.com</p>
+            </div>
+            <div>
+                <h4>Chính sách</h4>
+                <p>Chính sách bảo mật</p>
+            </div>
+        </div>
+        
+        <!-- Newsletter Signup Form -->
+        <div class="newsletter-form">
+            <h4>Đăng ký nhận thông tin</h4>
+            <form>
+                <input type="email" placeholder="Nhập email của bạn" required>
+                <button type="submit">Đăng ký</button>
+            </form>
+        </div>
+        <p>&copy; 2024 Trang web của Văn</p>
+    </footer>
+</body>
+</html>
